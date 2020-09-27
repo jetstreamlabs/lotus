@@ -1,0 +1,37 @@
+<?php
+
+namespace {{namespace}}Actions\Dashboard;
+
+use Serenity\Lotus\Core\Action;
+use {{namespace}}Responders\Dashboard\IndexResponder;
+
+
+class IndexAction extends Action
+{
+    /**
+     * Instance of the Responder property.
+     *
+     * @var \{{namespace}}Responders\Dashboard\IndexResponder
+     */
+    protected $responder;
+
+    /**
+     * Create a new action instance.
+     *
+     * @param \{{namespace}}Responders\Dashboard\IndexResponder
+     */
+    public function __construct(IndexResponder $responder)
+    {
+        $this->responder = $responder;
+    }
+
+    /**
+     * Invoke our action, handle domain, respond.
+     *
+     * @return \{{namespace}}Responders\Dashboard\IndexResponder
+     */
+    public function __invoke()
+    {
+        return $this->responder->send();
+    }
+}

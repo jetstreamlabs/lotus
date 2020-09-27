@@ -1,0 +1,19 @@
+<?php
+
+namespace DummyNamespace;
+
+use Serenity\Lotus\Core\Repository;
+use DummyRootNamespaceDomain\Repositories\Contracts\DummyClassContract;
+
+class DummyClass extends Repository implements DummyClassContract
+{
+    /**
+     * Set the repository entity.
+     *
+     * @return Entity
+     */
+    public function entity()
+    {
+        //
+    }
+}

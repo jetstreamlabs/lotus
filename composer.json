@@ -1,0 +1,39 @@
+{
+    "name": "serenity/lotus",
+    "description": "Adds Action Domain Responder pattern with InertiaJS and TailwindCSS to Laravel 7 and above.",
+    "type": "package",
+    "require": {
+        "php": "^7.3",
+        "inertiajs/inertia-laravel": "^0.2.5",
+        "kra8/laravel-snowflake": "^2.0",
+        "laravel/framework": "^7.0",
+        "laravel/ui": "^2.0",
+        "serenity/zora": "^1.0",
+        "tightenco/ziggy": "^0.9.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vince Kronlein",
+            "email": "vkronlein@icloud.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "helpers.php"
+        ],
+        "psr-4": {
+            "Serenity\\Lotus\\": ""
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Serenity\\Lotus\\Providers\\LotusServiceProvider",
+                "Serenity\\Lotus\\Providers\\ConsoleSupportServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,66 @@
+body {
+    font-family: "Montserrat";
+}
+
+.bg-purple {
+    background-color: theme-color("primary") !important;
+}
+
+.btn {
+    border-width: 2px;
+
+    &-link,
+    &-link:hover {
+        box-shadow: none !important;
+    }
+}
+
+.mt-6 {
+    margin-top: 6rem;
+}
+
+.card-header {
+    font-size: 1.8rem;
+}
+
+.dropdown-toggle::after {
+    margin-left: 0.5em;
+    vertical-align: 0.12em;
+}
+
+.nav-item {
+    .dropdown-menu {
+        margin: 0.925rem 0 0;
+
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background-color: rgba(0, 0, 0, 0.03);;
+        }
+    }
+}
+
+.navbar-brand {
+    font-size: 1.85rem;
+}
+
+footer {
+    background-color: #eee;
+    min-height: 5rem;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+
+    .navbar {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .nav-item {
+        .dropdown-menu {
+            border-radius: 0 0 0.25rem 0.25rem;
+            border-top-width: 0;
+        }
+    }
+}

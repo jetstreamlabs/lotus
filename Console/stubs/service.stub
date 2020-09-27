@@ -1,0 +1,87 @@
+<?php
+
+namespace DummyNamespace;
+
+use Serenity\Lotus\Core\Service;
+use Serenity\Lotus\Contracts\PayloadContract;
+
+class DummyClass extends Service
+{
+    /**
+     * Service method for index action.
+     *
+     * @return \Serenity\Lotus\Contracts\PayloadContract
+     */
+    public function handle(): PayloadContract
+    {
+    	// build up all your data here.
+
+        return $this->successResponse([]);
+    }
+
+    /**
+     * Service method for create action.
+     *
+     * @return \Serenity\Lotus\Contracts\PayloadContract
+     */
+    public function create(): PayloadContract
+    {
+
+        return $this->successResponse([]);
+    }
+
+    /**
+     * Service method for edit action.
+     *
+     * @return \Serenity\Lotus\Contracts\PayloadContract
+     */
+    public function edit(): PayloadContract
+    {
+
+        return $this->successResponse([]);
+    }
+
+    /**
+     * Service method for store action.
+     *
+     * @return \Serenity\Lotus\Contracts\PayloadContract
+     */
+    public function store(): PayloadContract
+    {
+
+        return $this->successResponse([]);
+    }
+
+    /**
+     * Service method for update action.
+     *
+     * @return \Serenity\Lotus\Contracts\PayloadContract
+     */
+    public function update(): PayloadContract
+    {
+
+        return $this->successResponse([]);
+    }
+
+    /**
+     * Service method for delete action.
+     *
+     * @return \Serenity\Lotus\Contracts\PayloadContract
+     */
+    public function delete(): PayloadContract
+    {
+
+        return $this->successResponse([]);
+    }
+
+    /**
+     * Service method for restore action.
+     *
+     * @return \Serenity\Lotus\Contracts\PayloadContract
+     */
+    public function restore(): PayloadContract
+    {
+
+        return $this->successResponse([]);
+    }
+}

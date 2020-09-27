@@ -1,0 +1,19 @@
+<?php
+
+namespace DummyNamespace;
+
+use Serenity\Lotus\Contracts\CriterionContract;
+
+class DummyClass implements CriterionContract
+{
+    /**
+     * Apply the requirements to the entity.
+     *
+     * @param  object $entity
+     * @return object
+     */
+    public function apply($entity)
+    {
+        //
+    }
+}
