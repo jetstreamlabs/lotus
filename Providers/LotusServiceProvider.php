@@ -7,40 +7,41 @@ use Illuminate\Support\Collection;
 use Illuminate\Pagination\UrlWindow;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class LotusServiceProvider extends ServiceProvider
 {
-	public function register()
-	{
-        if (! is_file(config_path('lotus.php'))) {
-        	$this->mergeConfigFrom(
-		        __DIR__.'/../config/lotus.php', 'lotus'
-		    );
+    public function register()
+    {
+        if (!is_file(config_path('lotus.php'))) {
+            $this->mergeConfigFrom(
+                __DIR__ . '/../config/lotus.php',
+                'lotus'
+            );
         }
 
-        if (! is_file(app_path('Domain/Middleware/MuteActions.php'))) {
-        	$router = $this->app['router'];
-    		$router->pushMiddlewareToGroup('web', \Serenity\Lotus\Middleware\MuteActions::class);
+        if (!is_file(app_path('Domain/Middleware/MuteActions.php'))) {
+            $router = $this->app['router'];
+            $router->pushMiddlewareToGroup('web', \Serenity\Lotus\Middleware\MuteActions::class);
         }
-
-	}
+    }
 
     public function boot()
     {
         $this->registerInertia();
         $this->registerLengthAwarePaginator();
 
-        Collection::macro('then', function($callback) {
+        Collection::macro('then', function ($callback) {
             return $callback($this);
         });
 
-        Collection::macro('pipe', function($callback) {
+        Collection::macro('pipe', function ($callback) {
             return $this->then($callback);
         });
 
-        Collection::macro('toAssoc', function() {
-            return $this->reduce(function($assoc, $keyAndValue) {
+        Collection::macro('toAssoc', function () {
+            return $this->reduce(function ($assoc, $keyAndValue) {
                 list($key, $value) = $keyAndValue;
                 $assoc[$key] = $value;
 
@@ -48,16 +49,20 @@ class LotusServiceProvider extends ServiceProvider
             }, new static);
         });
 
-        Collection::macro('mapToAssoc', function($callback) {
+        Collection::macro('mapToAssoc', function ($callback) {
             return $this->map($callback)->toAssoc();
         });
 
-        Collection::macro('transpose', function() {
-            $items = array_map(function(...$items) {
+        Collection::macro('transpose', function () {
+            $items = array_map(function (...$items) {
                 return $items;
             }, ...$this->values());
 
             return new static($items);
+        });
+
+        Builder::macro('scope', function ($scope) {
+            return $scope->getQuery($this);
         });
     }
 
@@ -80,7 +85,7 @@ class LotusServiceProvider extends ServiceProvider
                 'previous' => url()->previous(),
                 'copyright' => date('Y'),
             ],
-            'auth' => function() {
+            'auth' => function () {
                 return [
                     'user' => auth()->user() ? [
                         'id' => auth()->user()->id,
@@ -127,7 +132,8 @@ class LotusServiceProvider extends ServiceProvider
     protected function registerLengthAwarePaginator()
     {
         $this->app->bind(LengthAwarePaginator::class, function ($app, $values) {
-            return new class(...array_values($values)) extends LengthAwarePaginator {
+            return new class (...array_values($values)) extends LengthAwarePaginator
+            {
                 public function only(...$attributes)
                 {
                     return $this->transform(function ($item) use ($attributes) {
