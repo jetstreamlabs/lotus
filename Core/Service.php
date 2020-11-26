@@ -60,7 +60,7 @@ abstract class Service implements ServiceContract
     {
         return $this->respond($data['message'], 'warning', $data['route'], $status);
     }
-
+    
     /**
      * Build up a payload response.
      * @param  array  $data

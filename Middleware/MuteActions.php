@@ -16,16 +16,16 @@ class MuteActions
     public function handle($request, Closure $next)
     {
         $action = $request->route()->getAction();
-
+        
         if (isset($action['controller'])) {
             $class = get_class($request->route()->getController());
-
+            
             if (! $name = $this->mute($class)) {
                 return $next($request);
             }
 
             throw new \BadMethodCallException(sprintf(
-                'Method %s is not allowed in an Action class. See config.routing.allowed for more info.', $name
+                'Method %s is not allowed in an Action class. See config.lotus.allowed for more info.', $name
             ));
         }
 
@@ -41,12 +41,12 @@ class MuteActions
     private function mute($class)
     {
         $instance = new \ReflectionClass($class);
-
+        
         foreach ($instance->getMethods() as $method) {
             if ($method->isPublic() || $method->isProtected()) {
 
                 $name = $method->getName();
-
+                
                 if (! $this->isAllowed($name)) {
                     return $name;
                 }
@@ -64,7 +64,7 @@ class MuteActions
      */
     private function isAllowed($method)
     {
-        if (in_array($method, config('lotus.allowed.actions'))) {
+        if (in_array($method, config('lotus.allowed.actions')) || in_array($method, config('lotus.allowed.larecipe'))) {
             return true;
         }
 
