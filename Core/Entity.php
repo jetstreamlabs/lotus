@@ -3,8 +3,8 @@
 namespace Serenity\Lotus\Core;
 
 use Illuminate\Database\Eloquent\Model;
-use Kra8\Snowflake\HasSnowflakePrimary;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Serenity\Lotus\Concerns\HasSnowflakePrimary;
 
 abstract class Entity extends Model
 {

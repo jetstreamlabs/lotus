@@ -3,11 +3,13 @@
 namespace Serenity\Lotus\Providers;
 
 use Inertia\Inertia;
+use Godruoyi\Snowflake\Snowflake;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\UrlWindow;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Builder;
+use Godruoyi\Snowflake\RandomSequenceResolver;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class LotusServiceProvider extends ServiceProvider
@@ -25,6 +27,12 @@ class LotusServiceProvider extends ServiceProvider
             $router = $this->app['router'];
             $router->pushMiddlewareToGroup('web', \Serenity\Lotus\Middleware\MuteActions::class);
         }
+
+        $this->app->singleton(Snowflake::class, function () {
+            return (new Snowflake())
+                ->setStartTimeStamp(time() * 1000)
+                ->setSequenceResolver(new RandomSequenceResolver(time()));
+        });
     }
 
     public function boot()
@@ -132,7 +140,7 @@ class LotusServiceProvider extends ServiceProvider
     protected function registerLengthAwarePaginator()
     {
         $this->app->bind(LengthAwarePaginator::class, function ($app, $values) {
-            return new class (...array_values($values)) extends LengthAwarePaginator
+            return new class(...array_values($values)) extends LengthAwarePaginator
             {
                 public function only(...$attributes)
                 {

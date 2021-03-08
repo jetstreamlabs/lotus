@@ -1,39 +1,43 @@
 {
-    "name": "serenity/lotus",
-    "description": "Adds Action Domain Responder pattern with InertiaJS and TailwindCSS to Laravel 7 and above.",
-    "type": "package",
-    "require": {
-        "php": "^7.3",
-        "inertiajs/inertia-laravel": "^0.3.3",
-        "kra8/laravel-snowflake": "^2.0",
-        "laravel/framework": "^8.0",
-        "laravel/ui": "^3.0",
-        "serenity/zora": "^1.0",
-        "tightenco/ziggy": "^0.9.0"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Vince Kronlein",
-            "email": "vkronlein@icloud.com"
-        }
+  "name": "serenity/lotus",
+  "description": "Adds Action Domain Responder pattern with InertiaJS and TailwindCSS to Laravel 8 and above.",
+  "type": "package",
+  "require": {
+    "php": "^7.3",
+    "godruoyi/php-snowflake": "^1.0",
+    "inertiajs/inertia-laravel": "^0.3.3",
+    "laravel/framework": "^8.0",
+    "laravel/ui": "^3.0",
+    "serenity/zora": "^1.0",
+    "tightenco/ziggy": "^0.9.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vince Kronlein",
+      "email": "vkronlein@icloud.com"
+    }
+  ],
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "autoload": {
+    "files": [
+      "helpers.php"
     ],
-    "autoload": {
-        "files": [
-            "helpers.php"
-        ],
-        "psr-4": {
-            "Serenity\\Lotus\\": ""
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Serenity\\Lotus\\Providers\\LotusServiceProvider",
-                "Serenity\\Lotus\\Providers\\ConsoleSupportServiceProvider"
-            ]
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "psr-4": {
+      "Serenity\\Lotus\\": ""
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Serenity\\Lotus\\Providers\\LotusServiceProvider",
+        "Serenity\\Lotus\\Providers\\ConsoleSupportServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
