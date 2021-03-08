@@ -2,6 +2,8 @@
 
 namespace Serenity\Lotus\Concerns;
 
+use Godruoyi\Snowflake\Snowflake;
+
 trait HasSnowFlakePrimary
 {
     public static function bootHasSnowflakePrimary()
@@ -10,7 +12,7 @@ trait HasSnowFlakePrimary
             if (is_null($model->getKey())) {
                 $model->setIncrementing(false);
                 $keyName    = $model->getKeyName();
-                $id         = app(Snowflake::class)->next();
+                $id         = app(Snowflake::class)->id();
                 $model->setAttribute($keyName, $id);
             }
         });
