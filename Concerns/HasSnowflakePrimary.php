@@ -4,7 +4,7 @@ namespace Serenity\Lotus\Concerns;
 
 use Godruoyi\Snowflake\Snowflake;
 
-trait HasSnowFlakePrimary
+trait HasSnowflakePrimary
 {
     public static function bootHasSnowflakePrimary()
     {
