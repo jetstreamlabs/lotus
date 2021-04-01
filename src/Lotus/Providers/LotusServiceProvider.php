@@ -8,9 +8,19 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Builder;
 use Godruoyi\Snowflake\RandomSequenceResolver;
+use Serenity\Lotus\Console\LotusInstallCommand;
 
 class LotusServiceProvider extends ServiceProvider
 {
+    /**
+     * The commands to be registered.
+     *
+     * @var array
+     */
+    protected $devCommands = [
+        'LotusInstall' => 'command.lotus.install',
+    ];
+
     /**
      * Register any application services.
      *
@@ -26,6 +36,10 @@ class LotusServiceProvider extends ServiceProvider
             __DIR__ . '/../../config/lotus.php',
             'lotus'
         );
+
+        $this->registerCommands(array_merge(
+            $this->devCommands
+        ));
     }
 
     public function boot()
@@ -37,6 +51,21 @@ class LotusServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../config/lotus.php' => config_path('lotus.php'),
         ]);
+    }
+
+    /**
+     * Register the given commands.
+     *
+     * @param  array  $commands
+     * @return void
+     */
+    protected function registerCommands(array $commands)
+    {
+        foreach (array_keys($commands) as $command) {
+            call_user_func_array([$this, "register{$command}Command"], []);
+        }
+
+        $this->commands(array_values($commands));
     }
 
     /**
@@ -81,6 +110,18 @@ class LotusServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerLotusInstallCommand()
+    {
+        $this->app->singleton('command.lotus.install', function ($app) {
+            return new LotusInstallCommand($app['composer'], $app['files']);
+        });
+    }
+
+    /**
      * Register our required middleware.
      *
      * @return void
@@ -114,5 +155,15 @@ class LotusServiceProvider extends ServiceProvider
         $this->app->singleton('breadcrumb', function (Application $app) {
             return $app->make(\Serenity\Lotus\Core\Breadcrumbs::class);
         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return array_merge(array_values($this->devCommands));
     }
 }

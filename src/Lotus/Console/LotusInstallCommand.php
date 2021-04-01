@@ -2,10 +2,14 @@
 
 namespace Serenity\Lotus\Console;
 
+use Faker\Generator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Composer;
 use Symfony\Component\Finder\Finder;
 use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Console\Helper\ProgressBar;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Console\Output\ConsoleOutputInterface;
 
 class LotusInstallCommand extends Command
 {
@@ -14,14 +18,14 @@ class LotusInstallCommand extends Command
      *
      * @var string
      */
-    protected $name = 'lotus:install';
+    protected $name = 'serenity:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Set Lotus namespace and move/remove needed files. This cannot be undone.';
+    protected $description = 'Install Serenity ADR framework into your application.';
 
     /**
      * The Composer class instance.
@@ -44,6 +48,12 @@ class LotusInstallCommand extends Command
      */
     protected $currentRoot;
 
+    protected $messageSection;
+
+    protected $barSection;
+
+    protected $faker;
+
     /**
      * Install files and overwrite all needed paths.
      *
@@ -57,6 +67,13 @@ class LotusInstallCommand extends Command
 
         $this->files = $files;
         $this->composer = $composer;
+
+        $consoleOutput = app(ConsoleOutput::class);
+
+        $this->messageSection = $consoleOutput->section();
+        $this->barSection = $consoleOutput->section();
+
+        $this->faker = app(Generator::class);
     }
 
     /**
@@ -65,6 +82,73 @@ class LotusInstallCommand extends Command
      * @return void
      */
     public function handle()
+    {
+        $this->output->write(PHP_EOL .
+            "<fg=cyan>
+   _____                      _ __       
+  / ___/___  ________  ____  (_) /___  __
+  \__ \/ _ \/ ___/ _ \/ __ \/ / __/ / / /
+ ___/ /  __/ /  /  __/ / / / / /_/ /_/ / 
+/____/\___/_/   \___/_/ /_/_/\__/\__, /  
+                                /____/   </>" . PHP_EOL . PHP_EOL);
+
+        $this->line("<fg=cyan>The VITAL Stack PHP Framework for fellow Artisans</>");
+        $this->newline(2);
+        $this->line("<fg=cyan>Thanks for interest in Serenity and I hope you enjoy coding with it.</>");
+        $this->line("<fg=cyan>-- Vince K :: Product Creator</>");
+
+
+        $this->newLine(2);
+        $this->line("<fg=red>Make sure you have a clean Laravel 8.x installation.</>");
+        $this->line("<fg=red>Any existing files WILL be nuked completely.</>");
+        $this->newLine();
+        $this->error(">>> THIS CANNOT BE UNDONE! <<<");
+
+        if ($this->confirm("Are you absolutely sure? There's no turning back!")) {
+            $this->newLine(2);
+            $this->messageSection->overwrite("<fg=cyan>Serenity is being installed.</>" . "\n");
+            $this->bar = $this->generateProgressBar(13);
+            $this->progressSim();
+            //$this->executeInstall();
+        }
+    }
+
+    public function progressSim()
+    {
+        $this->bar->start();
+
+        for ($i = 0; $i < 13; $i++) {
+            $this->temp($i);
+            $this->bar->advance();
+        }
+
+        $this->bar->finish();
+
+        $this->newLine(3);
+        $this->line("<fg=cyan>Congratulations! Serenity is now installed and you're ready to go.</>");
+        $this->line("<fg=cyan>Welcome to Coding Zen =) If you like what I've built please consider sponsoring the project.</>");
+        $this->newLine();
+        $this->line("<fg=cyan>Now get your butt to work and create something beautiful.</>");
+        $this->output->write(PHP_EOL . "<fg=red>
+                    ..... (¯`v´¯)♥
+                    .......•.¸.•´
+                    ....¸.•´
+                    .. (
+                     ☻/
+                    /▌♥♥
+                    / \ ♥♥ </>" . PHP_EOL . PHP_EOL);
+
+        $this->newLine(2);
+    }
+
+    public function temp($item)
+    {
+        usleep(rand(1000000, 6000000));
+        $this->messageSection->overwrite("<fg=cyan>" . $this->faker->sentence() . "</> \n");
+        return true;
+    }
+
+    public function executeInstall()
     {
         $this->currentRoot = trim($this->laravel->getNamespace(), '\\');
 
@@ -85,9 +169,9 @@ class LotusInstallCommand extends Command
         $this->call('clear-compiled');
 
         // once we're all done remove the install directory
-        $this->files->deleteDirectory(__DIR__.'/../install');
+        $this->files->deleteDirectory(__DIR__ . '/../install');
 
-        $this->info('Lotus is set up for your application, WOOT!');
+        $this->info('Serenity is set up for your application, WOOT!');
     }
 
     /**
@@ -102,7 +186,7 @@ class LotusInstallCommand extends Command
             $this->files->deleteDirectory(base_path('app'));
 
             $this->files->moveDirectory(
-                __DIR__.'/../install/app',
+                __DIR__ . '/../install/app',
                 base_path('app')
             );
         }
@@ -120,7 +204,7 @@ class LotusInstallCommand extends Command
             $this->files->delete(base_path('routes') . '/web.php');
 
             $this->files->move(
-                __DIR__.'/../install/web.php',
+                __DIR__ . '/../install/web.php',
                 base_path('routes') . '/web.php'
             );
         }
@@ -138,7 +222,7 @@ class LotusInstallCommand extends Command
             $this->files->deleteDirectory(base_path('resources'));
 
             $this->files->moveDirectory(
-                __DIR__.'/../install/resources',
+                __DIR__ . '/../install/resources',
                 base_path('resources')
             );
         }
@@ -156,7 +240,7 @@ class LotusInstallCommand extends Command
             $this->files->deleteDirectory(base_path('database'));
 
             $this->files->moveDirectory(
-                __DIR__.'/../install/database',
+                __DIR__ . '/../install/database',
                 base_path('database')
             );
         }
@@ -174,7 +258,7 @@ class LotusInstallCommand extends Command
             $this->files->delete(base_path('webpack.mix.js'));
 
             $this->files->move(
-                __DIR__.'/../install/webpack.mix.js',
+                __DIR__ . '/../install/webpack.mix.js',
                 base_path('webpack.mix.js')
             );
         }
@@ -192,7 +276,7 @@ class LotusInstallCommand extends Command
             $this->files->delete(base_path('package.json'));
 
             $this->files->move(
-                __DIR__.'/../install/package.json',
+                __DIR__ . '/../install/package.json',
                 base_path('package.json')
             );
         }
@@ -210,7 +294,7 @@ class LotusInstallCommand extends Command
         }
 
         $this->files->move(
-            __DIR__.'/../install/lotus.php',
+            __DIR__ . '/../install/lotus.php',
             config_path('lotus.php')
         );
     }
@@ -223,15 +307,15 @@ class LotusInstallCommand extends Command
     protected function setBootstrapNamespaces()
     {
         $search = [
-            $this->currentRoot.'\\Http',
-            $this->currentRoot.'\\Console',
-            $this->currentRoot.'\\Exceptions',
+            $this->currentRoot . '\\Http',
+            $this->currentRoot . '\\Console',
+            $this->currentRoot . '\\Exceptions',
         ];
 
         $replace = [
-            $this->currentRoot.'\\Domain',
-            $this->currentRoot.'\\Domain\Console',
-            $this->currentRoot.'\\Domain\Exceptions',
+            $this->currentRoot . '\\Domain',
+            $this->currentRoot . '\\Domain\Console',
+            $this->currentRoot . '\\Domain\Exceptions',
         ];
 
         $this->replaceIn($this->getBootstrapPath(), $search, $replace);
@@ -257,13 +341,13 @@ class LotusInstallCommand extends Command
     protected function setAppConfigNamespaces()
     {
         $search = [
-            $this->currentRoot.'\\Providers',
+            $this->currentRoot . '\\Providers',
             'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider'
         ];
 
         $replace = [
-            $this->currentRoot.'\\Domain\\Providers',
-            'Serenity\\Lotus\\Providers\\ConsoleSupportServiceProvider'
+            $this->currentRoot . '\\Domain\\Providers',
+            'Serenity\\Generators\\Providers\\ConsoleSupportServiceProvider'
         ];
 
         $this->replaceIn($this->getConfigPath('app'), $search, $replace);
@@ -278,8 +362,8 @@ class LotusInstallCommand extends Command
     {
         $this->replaceIn(
             $this->getConfigPath('auth'),
-            $this->currentRoot.'\\User',
-            $this->currentRoot.'\\Domain\Entities\User'
+            $this->currentRoot . '\\User',
+            $this->currentRoot . '\\Domain\Entities\User'
         );
     }
 
@@ -292,8 +376,8 @@ class LotusInstallCommand extends Command
     {
         $this->replaceIn(
             $this->getConfigPath('services'),
-            $this->currentRoot.'\\User',
-            $this->currentRoot.'\\Domain\Entities\User'
+            $this->currentRoot . '\\User',
+            $this->currentRoot . '\\Domain\Entities\User'
         );
     }
 
@@ -319,7 +403,7 @@ class LotusInstallCommand extends Command
      */
     protected function getBootstrapPath()
     {
-        return $this->laravel->bootstrapPath().'/app.php';
+        return $this->laravel->bootstrapPath() . '/app.php';
     }
 
     /**
@@ -330,6 +414,23 @@ class LotusInstallCommand extends Command
      */
     protected function getConfigPath($name)
     {
-        return $this->laravel['path.config'].'/'.$name.'.php';
+        return $this->laravel['path.config'] . '/' . $name . '.php';
+    }
+
+    protected function generateProgressBar(int $max)
+    {
+        $progressBar = new ProgressBar($this->barSection, $max);
+        $progressBar->setFormat(
+            sprintf("<fg=cyan>%s</>", "%current%/%max% %bar% %percent:3s%%")
+        );
+
+
+        if ('\\' !== \DIRECTORY_SEPARATOR || 'Hyper' === getenv('TERM_PROGRAM')) {
+            $progressBar->setEmptyBarCharacter('░'); // light shade character \u2591
+            $progressBar->setProgressCharacter('');
+            $progressBar->setBarCharacter('▓'); // dark shade character \u2593
+        }
+
+        return $progressBar;
     }
 }
