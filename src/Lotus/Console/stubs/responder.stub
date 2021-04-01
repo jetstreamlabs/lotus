@@ -1,0 +1,26 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Domain\Contracts\VueResponderInterface;
+use Serenity\Lotus\Core\VueResponder as BaseResponder;
+
+class DummyClass extends BaseResponder implements VueResponderInterface
+{
+    /**
+     * Default HTTP response code.
+     *
+     * @var integer
+     */
+    protected $status = 200;
+
+    /**
+     * Build up a response and return it to our action.
+     *
+     * @return \Inertia\ResponseFactory
+     */
+    public function send()
+    {
+        //
+    }
+}

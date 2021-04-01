@@ -3,13 +3,19 @@
   "description": "Adds Action Domain Responder pattern with InertiaJS and TailwindCSS to Laravel 8 and above.",
   "type": "package",
   "require": {
-    "php": "^7.3",
+    "php": "^7.4|8.0",
     "godruoyi/php-snowflake": "^1.0",
-    "inertiajs/inertia-laravel": "^0.3.3",
-    "laravel/framework": "^8.0",
-    "laravel/ui": "^3.0",
-    "serenity/zora": "^1.0",
-    "tightenco/ziggy": "^0.9.0"
+    "inertiajs/inertia-laravel": "^0.4",
+    "larasocket/larasocket-driver": "^1.0",
+    "laravel/framework": "^8.12",
+    "laravel/sanctum": "^2.9",
+    "scrivo/highlight.php": "v9.18.1.6",
+    "serenity/zora": "^2.0",
+    "spatie/laravel-permission": "^4.0",
+    "spatie/laravel-ray": "^1.17",
+    "symfony/css-selector": "^5.2",
+    "symfony/dom-crawler": "^5.2",
+    "tightenco/ziggy": "^1.0"
   },
   "license": "MIT",
   "authors": [
@@ -24,10 +30,10 @@
   },
   "autoload": {
     "files": [
-      "helpers.php"
+      "src/Lotus/helpers.php"
     ],
     "psr-4": {
-      "Serenity\\Lotus\\": ""
+      "Serenity\\Lotus\\": "src/Lotus/"
     }
   },
   "extra": {
