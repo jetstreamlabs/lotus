@@ -4,7 +4,7 @@ namespace Serenity\Lotus\Core;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Serenity\Lotus\Concerns\HasSnowflakePrimary;
+use JSLabs\Snowflake\Concerns\HasSnowflakePrimary;
 
 abstract class Entity extends Model
 {
