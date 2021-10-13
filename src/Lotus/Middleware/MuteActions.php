@@ -9,7 +9,7 @@ class MuteActions
 	/**
 	 * These are base methods of the Action class that
 	 * should be ignored when checking allowed methods.
-	 * 
+	 *
 	 * @var array
 	 */
 	protected array $ignored = [
@@ -56,7 +56,6 @@ class MuteActions
 
 		foreach ($instance->getMethods() as $method) {
 			if ($method->isPublic() || $method->isProtected()) {
-
 				$name = $method->getName();
 
 				if (!$this->isAllowed($name)) {

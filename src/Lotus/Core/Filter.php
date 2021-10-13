@@ -10,7 +10,7 @@ abstract class Filter implements FilterInterface
 {
 	/**
 	 * Our local request property.
-	 * 
+	 *
 	 * @var \Illuminate\Http\Request
 	 */
 	protected Request $request;
@@ -31,7 +31,7 @@ abstract class Filter implements FilterInterface
 	 * @param \Illuminate\Database\Eloquent\Builder $query
 	 * @return void
 	 */
-	public abstract function getQuery(Builder $query);
+	abstract public function getQuery(Builder $query);
 
 	/**
 	 * Filter the query by soft deletes.

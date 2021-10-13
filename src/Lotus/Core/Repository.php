@@ -4,8 +4,8 @@ namespace Serenity\Lotus\Core;
 
 use Illuminate\Support\Arr;
 use Serenity\Lotus\Exceptions\EntityNotFound;
-use Serenity\Lotus\Contracts\CriteriaInterface;
 use Serenity\Lotus\Exceptions\NoEntityDefined;
+use Serenity\Lotus\Contracts\CriteriaInterface;
 use Serenity\Lotus\Contracts\RepositoryInterface;
 
 abstract class Repository implements RepositoryInterface, CriteriaInterface

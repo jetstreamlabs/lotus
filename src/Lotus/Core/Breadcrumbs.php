@@ -11,7 +11,7 @@ class Breadcrumbs
 
 	/**
 	 * Add a new breadcrumb to the stack.
-	 * 
+	 *
 	 * @param string $text
 	 * @param string $route
 	 */
@@ -27,7 +27,7 @@ class Breadcrumbs
 
 	/**
 	 * Return the breadcrumbs array.
-	 * 
+	 *
 	 * @return array
 	 */
 	public function render()

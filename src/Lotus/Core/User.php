@@ -2,7 +2,6 @@
 
 namespace Serenity\Lotus\Core;
 
-use Serenity\Lotus\Core\Entity;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;

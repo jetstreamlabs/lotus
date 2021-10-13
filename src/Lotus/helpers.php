@@ -1,7 +1,6 @@
 <?php
 
-if (! function_exists('bcs'))
-{
+if (! function_exists('bcs')) {
 	/**
 	 * Return the breadcrumb instance from the container
 	 * or push new crumbs to instance.
@@ -10,7 +9,8 @@ if (! function_exists('bcs'))
 	 * @param  string $route
 	 * @return \App\Services\Breadcrumbs|void
 	 */
-	function bcs($text = null, $route = null) {
+	function bcs($text = null, $route = null)
+	{
 
 		// If nothing is passed return the object.
 		if (is_null($text) && is_null($route)) {

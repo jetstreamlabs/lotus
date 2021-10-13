@@ -52,7 +52,7 @@ app
         └── IndexResponder.php
 ```
 
-We didn't expand all the directories for the sake of brevity, but you can see the idea here. 
+We didn't expand all the directories for the sake of brevity, but you can see the idea here.
 
 All of your business logic now exists ONLY within your Domain directory, which allows for clean Separation of Concerns delegating all HTTP related tasks to your Action, and all HTTP Response tasks to your Responders.
 

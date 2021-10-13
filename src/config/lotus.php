@@ -12,18 +12,18 @@
 
 return [
   'allowed' => [
-    'actions' => [
-      '__construct', '__invoke'
-    ],
-    'responders' => [
-      'send', 'make'
-    ]
+	'actions' => [
+	  '__construct', '__invoke'
+	],
+	'responders' => [
+	  'send', 'make'
+	]
   ],
   'responder' => \App\Domain\Contracts\VueResponderInterface::class,
   'pages' => [
-    'path' => env('PAGE_PATH', 'resources/content/pages'),
+	  'path' => env('PAGE_PATH', 'resources/content/pages'),
   ],
   'collections' => [
-    'path' => env('COLLECTION_PATH', 'resources/content/collections'),
-  ],
+	  'path' => env('COLLECTION_PATH', 'resources/content/collections'),
+  ]
 ];

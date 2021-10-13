@@ -5,11 +5,9 @@ namespace Serenity\Lotus\Console;
 use Faker\Generator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Composer;
-use Symfony\Component\Finder\Finder;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\ConsoleOutput;
-use Symfony\Component\Console\Output\ConsoleOutputInterface;
 
 class LotusInstallCommand extends Command
 {
@@ -182,7 +180,6 @@ class LotusInstallCommand extends Command
 	protected function moveAppDirectory()
 	{
 		if ($this->files->isDirectory(base_path('app'))) {
-
 			$this->files->deleteDirectory(base_path('app'));
 
 			$this->files->moveDirectory(
@@ -200,7 +197,6 @@ class LotusInstallCommand extends Command
 	protected function moveRouteFile()
 	{
 		if ($this->files->isFile(base_path('routes') . '/web.php')) {
-
 			$this->files->delete(base_path('routes') . '/web.php');
 
 			$this->files->move(
@@ -218,7 +214,6 @@ class LotusInstallCommand extends Command
 	protected function moveResourcesDirectory()
 	{
 		if ($this->files->isDirectory(base_path('resources'))) {
-
 			$this->files->deleteDirectory(base_path('resources'));
 
 			$this->files->moveDirectory(
@@ -236,7 +231,6 @@ class LotusInstallCommand extends Command
 	protected function moveDatabaseDirectory()
 	{
 		if ($this->files->isDirectory(base_path('database'))) {
-
 			$this->files->deleteDirectory(base_path('database'));
 
 			$this->files->moveDirectory(
@@ -254,7 +248,6 @@ class LotusInstallCommand extends Command
 	protected function moveWebpackFile()
 	{
 		if ($this->files->isFile(base_path('webpack.mix.js'))) {
-
 			$this->files->delete(base_path('webpack.mix.js'));
 
 			$this->files->move(
@@ -272,7 +265,6 @@ class LotusInstallCommand extends Command
 	protected function movePackageFile()
 	{
 		if ($this->files->isFile(base_path('package.json'))) {
-
 			$this->files->delete(base_path('package.json'));
 
 			$this->files->move(

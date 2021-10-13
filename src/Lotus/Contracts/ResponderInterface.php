@@ -2,8 +2,6 @@
 
 namespace Serenity\Lotus\Contracts;
 
-use Serenity\Lotus\Contracts\PayloadInterface;
-
 interface ResponderInterface
 {
 	/**

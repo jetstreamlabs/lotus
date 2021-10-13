@@ -3,7 +3,6 @@
 namespace Serenity\Lotus\Core;
 
 use BadMethodCallException;
-use Serenity\Lotus\Core\Options;
 use Serenity\Lotus\Contracts\ActionInterface;
 use Serenity\Lotus\Contracts\ServiceInterface;
 use Serenity\Lotus\Contracts\ResponderInterface;
@@ -13,7 +12,7 @@ abstract class Action implements ActionInterface
 	/**
 	 * All actions must have a responder that implements
 	 * the ResponderInterface.
-	 * 
+	 *
 	 * @var \Serenity\Lotus\Contracts\ResponderInterface
 	 */
 	protected ResponderInterface $responder;
@@ -21,7 +20,7 @@ abstract class Action implements ActionInterface
 	/**
 	 * If an action has a service it must be an instance
 	 * that implements the ServiceInterface.
-	 * 
+	 *
 	 * @var \Serenity\Lotus\Contracts\ServiceInterface
 	 */
 	protected ServiceInterface $service;
@@ -76,7 +75,7 @@ abstract class Action implements ActionInterface
 	}
 
 	/**
-	 * Set the component file, and payload expectation, then 
+	 * Set the component file, and payload expectation, then
 	 * return the class for chaining.
 	 *
 	 * @param  string $component
