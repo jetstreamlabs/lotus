@@ -9,11 +9,11 @@ $finder = \PhpCsFixer\Finder::create()
 $config = new \PhpCsFixer\Config();
 
 return $config->setRules([
-    '@PSR2' => true,
-    'array_syntax' => ['syntax' => 'short'],
-    'ordered_imports' => ['sort_algorithm' => 'length'],
-    'no_spaces_around_offset' => true,
-    'no_unused_imports' => true,
-  ])
-  ->setIndent("\t")
-  ->setFinder($finder);
+  '@PSR2' => true,
+  'array_syntax' => ['syntax' => 'short'],
+  'ordered_imports' => ['sort_algorithm' => 'length'],
+  'no_spaces_around_offset' => true,
+  'no_unused_imports' => true,
+])
+->setIndent("\t")
+->setFinder($finder);
