@@ -7,13 +7,13 @@ use Serenity\Lotus\Contracts\ResponderInterface;
 
 class Blade extends Responder implements ResponderInterface
 {
-    public function __construct()
-    {
-        // to implement
-    }
+	public function __construct()
+	{
+		// to implement
+	}
 
-    public function send()
-    {
-        // to implement
-    }
+	public function send()
+	{
+		// to implement
+	}
 }
