@@ -27,7 +27,7 @@ class LotusServiceProvider extends ServiceProvider
 	public function register()
 	{
 		$this->app->bind('VERSION', function (Application $app) {
-			return '1.0.1';
+			return '1.0.2';
 		});
 
 		$this->mergeConfigFrom(
