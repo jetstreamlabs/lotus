@@ -6,19 +6,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Builder;
-use Serenity\Lotus\Console\LotusInstallCommand;
 
 class LotusServiceProvider extends ServiceProvider
 {
-	/**
-	 * The commands to be registered.
-	 *
-	 * @var array
-	 */
-	protected $devCommands = [
-		'LotusInstall' => 'command.lotus.install',
-	];
-
 	/**
 	 * Register any application services.
 	 *
@@ -27,17 +17,13 @@ class LotusServiceProvider extends ServiceProvider
 	public function register()
 	{
 		$this->app->bind('VERSION', function (Application $app) {
-			return '1.0.2';
+			return '1.0.3';
 		});
 
 		$this->mergeConfigFrom(
 			__DIR__ . '/../../config/lotus.php',
 			'lotus'
 		);
-
-		$this->registerCommands(array_merge(
-			$this->devCommands
-		));
 
 		$this->rebindLaravelDefaults();
 	}
@@ -52,21 +38,6 @@ class LotusServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/../../config/lotus.php' => config_path('lotus.php'),
 		]);
-	}
-
-	/**
-	 * Register the given commands.
-	 *
-	 * @param  array  $commands
-	 * @return void
-	 */
-	protected function registerCommands(array $commands)
-	{
-		foreach (array_keys($commands) as $command) {
-			call_user_func_array([$this, "register{$command}Command"], []);
-		}
-
-		$this->commands(array_values($commands));
 	}
 
 	/**
@@ -107,18 +78,6 @@ class LotusServiceProvider extends ServiceProvider
 
 		Builder::macro('scope', function ($scope) {
 			return $scope->getQuery($this);
-		});
-	}
-
-	/**
-	 * Register the command.
-	 *
-	 * @return void
-	 */
-	protected function registerLotusInstallCommand()
-	{
-		$this->app->singleton('command.lotus.install', function ($app) {
-			return new LotusInstallCommand($app['composer'], $app['files']);
 		});
 	}
 
