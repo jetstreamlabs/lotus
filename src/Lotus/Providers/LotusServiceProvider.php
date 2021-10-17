@@ -2,12 +2,10 @@
 
 namespace Serenity\Lotus\Providers;
 
-use Godruoyi\Snowflake\Snowflake;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Builder;
-use Godruoyi\Snowflake\RandomSequenceResolver;
 use Serenity\Lotus\Console\LotusInstallCommand;
 
 class LotusServiceProvider extends ServiceProvider
@@ -149,12 +147,6 @@ class LotusServiceProvider extends ServiceProvider
 	 */
 	protected function registerProviders()
 	{
-		$this->app->singleton(Snowflake::class, function () {
-			return (new Snowflake())
-				->setStartTimeStamp(time() * 1000)
-				->setSequenceResolver(new RandomSequenceResolver(time()));
-		});
-
 		$this->app->singleton('breadcrumb', function (Application $app) {
 			return $app->make(\Serenity\Lotus\Core\Breadcrumbs::class);
 		});

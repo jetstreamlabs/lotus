@@ -56,6 +56,26 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	}
 
 	/**
+	 * Execute a query for a single record with soft-deletes by ID.
+	 *
+	 * @param  int	$id
+	 * @return mixed|static
+	 */
+	public function findWithTrashed($id)
+	{
+		$entity = $this->entity->withTrashed()->find($id);
+
+		if (!$entity) {
+			throw (new EntityNotFound)->setEntity(
+				get_class($this->entity->getEntity()),
+				$id
+			);
+		}
+
+		return $entity;
+	}
+
+	/**
 	 * Find where by id and value.
 	 *
 	 * @param  string $column
@@ -141,6 +161,28 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	public function delete(int $id): bool
 	{
 		return $this->find($id)->delete();
+	}
+
+	/**
+	 * Force delete a trashed entity.
+	 *
+	 * @param  integer $id
+	 * @return boolean
+	 */
+	public function deleteFinal(int $id): bool
+	{
+		return $this->findWithTrashed($id)->forceDelete();
+	}
+
+	/**
+	 * Restore a soft-deleted entity.
+	 *
+	 * @param  integer $id
+	 * @return boolean
+	 */
+	public function restore(int $id): bool
+	{
+		return $this->findWithTrashed($id)->restore();
 	}
 
 	/**
