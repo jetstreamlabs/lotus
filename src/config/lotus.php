@@ -1,14 +1,12 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Lotus Params
-|--------------------------------------------------------------------------
-|
-| Set any additional routing parameters needed for your application here,
-| and you can also change default paths to your pages and collections.
-|
-*/
+ * Lotus Package for ADR, Inertia, Snowflake support in Laravel ^8.*
+ * --------------------------------------------------------------------------
+ * Copyright (c) Jetstream Labs, LLC. - All Rights Reserved.
+ * Licensed under the MIT License (MIT) - https://opensource.org/licenses/MIT
+ * Maintained by secondmanveran - Queen Creek, AZ USA
+ */
 
 return [
 	'allowed' => [
