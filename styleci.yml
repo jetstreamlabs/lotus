@@ -2,7 +2,7 @@ php:
   risky: false
   version: 8.1
   preset: recommended
-  tab-width: 2
+  tab-width: 1
   use-tabs: true
   finder:
     exclude:
