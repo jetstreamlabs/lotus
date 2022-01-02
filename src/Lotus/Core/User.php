@@ -10,11 +10,11 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
 class User extends Entity implements
-    AuthenticatableContract,
-    AuthorizableContract,
-    CanResetPasswordContract
+	AuthenticatableContract,
+	AuthorizableContract,
+	CanResetPasswordContract
 {
-    use Authenticatable;
-    use Authorizable;
-    use CanResetPassword;
+	use Authenticatable;
+	use Authorizable;
+	use CanResetPassword;
 }
