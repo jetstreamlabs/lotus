@@ -1,50 +1,47 @@
 {
-  "name": "serenity/lotus",
-  "description": "Adds Action Domain Responder pattern with InertiaJS and TailwindCSS to Laravel 8 and above.",
-  "type": "package",
-  "require": {
-    "php": "^7.4|^8.0",
-    "doctrine/dbal": "^3.1",
-    "inertiajs/inertia-laravel": "^0.4",
-    "jetstreamlabs/snowflake": "^1.1",
-    "laravel/framework": "^8.12",
-    "laravel/sanctum": "^2.9",
-    "scrivo/highlight.php": "v9.18.1.6",
-    "serenity/zora": "^2.3",
-    "spatie/laravel-permission": "^4.0",
-    "symfony/css-selector": "^5.2",
-    "symfony/dom-crawler": "^5.2",
-    "tightenco/ziggy": "^1.0"
-  },
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Vince Kronlein",
-      "email": "vkronlein@icloud.com"
-    }
-  ],
-  "config": {
-    "preferred-install": "dist",
-    "sort-packages": true
-  },
-  "autoload": {
-    "files": [
-      "src/Lotus/helpers.php"
-    ],
-    "psr-4": {
-      "Serenity\\Lotus\\": "src/Lotus/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Serenity\\Lotus\\Providers\\LotusServiceProvider"
-      ]
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.2"
-  }
+	"name": "serenity/lotus",
+	"description": "Adds Action Domain Responder pattern with InertiaJS and TailwindCSS to Laravel 8 and above.",
+	"type": "package",
+	"require": {
+		"php": "^8.0",
+		"doctrine/dbal": "^3.2",
+		"inertiajs/inertia-laravel": "^0.4.5",
+		"jetstreamlabs/snowflake": "^1.2",
+		"laravel/framework": "^8.77",
+		"laravel/sanctum": "^2.13",
+		"scrivo/highlight.php": "v9.18.1.6",
+		"serenity/zora": "^2.3",
+		"spatie/laravel-permission": "^4.4.3",
+		"symfony/css-selector": "^5.2",
+		"symfony/dom-crawler": "^5.2",
+		"tightenco/ziggy": "^1.4"
+	},
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Vince Kronlein",
+			"email": "vkronlein@icloud.com"
+		}
+	],
+	"config": {
+		"preferred-install": "dist",
+		"sort-packages": true
+	},
+	"autoload": {
+		"files": [
+			"src/Lotus/helpers.php"
+		],
+		"psr-4": {
+			"Serenity\\Lotus\\": "src/Lotus/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Serenity\\Lotus\\Providers\\LotusServiceProvider"
+			]
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
 }
