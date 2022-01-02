@@ -1,13 +1,12 @@
-php:
-  risky: false
-  version: 8.1
-  preset: recommended
-  tab-width: 1
-  use-tabs: true
-  finder:
-    exclude:
-      - 'storage'
-      - 'vendor'
-    name: '*.php'
-    not-name:
-      - '*.blade.php'
+risky: false
+version: 8.1
+preset: recommended
+tab-width: 1
+use-tabs: true
+finder:
+  exclude:
+    - 'storage'
+    - 'vendor'
+  name: '*.php'
+  not-name:
+    - '*.blade.php'
