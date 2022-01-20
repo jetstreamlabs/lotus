@@ -78,7 +78,7 @@ const releaseNotesGeneratorOptions = {
 
 module.exports = {
 	debug: true,
-	repositoryUrl: 'https://github.com/serenityphp/lotus',
+	repositoryUrl: 'https://github.com/jetstreamlabs/lotus',
 
 	plugins: [
 		// analyze commits with conventional-changelog

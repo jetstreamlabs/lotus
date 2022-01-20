@@ -8,11 +8,11 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Core;
+namespace Jetlabs\Lotus\Core;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Serenity\Lotus\Contracts\FilterInterface;
+use Jetlabs\Lotus\Contracts\FilterInterface;
 
 abstract class Filter implements FilterInterface
 {
@@ -26,7 +26,7 @@ abstract class Filter implements FilterInterface
 	/**
 	 * Create a new instance of the class.
 	 *
-	 * @param \Illuminate\Http\Request $request
+	 * @param  \Illuminate\Http\Request  $request
 	 */
 	public function __construct(Request $request)
 	{
@@ -36,8 +36,7 @@ abstract class Filter implements FilterInterface
 	/**
 	 * Abstract get query class required by filter classes.
 	 *
-	 * @param \Illuminate\Database\Eloquent\Builder $query
-	 *
+	 * @param  \Illuminate\Database\Eloquent\Builder  $query
 	 * @return void
 	 */
 	abstract public function getQuery(Builder $query);
@@ -45,8 +44,7 @@ abstract class Filter implements FilterInterface
 	/**
 	 * Filter the query by soft deletes.
 	 *
-	 * @param \Illuminate\Database\Eloquent\Builder $query
-	 *
+	 * @param  \Illuminate\Database\Eloquent\Builder  $query
 	 * @return void
 	 */
 	protected function filterByTrashed(Builder $query)

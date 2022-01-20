@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Core;
+namespace Jetlabs\Lotus\Core;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -42,9 +42,8 @@ abstract class Entity extends Model
 	/**
 	 * Retrieve the model for a bound value.
 	 *
-	 * @param mixed       $value
-	 * @param string|null $field
-	 *
+	 * @param  mixed  $value
+	 * @param  string|null  $field
 	 * @return \Illuminate\Database\Eloquent\Model|null
 	 */
 	public function resolveRouteBinding($value, $field = null)

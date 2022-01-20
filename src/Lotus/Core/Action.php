@@ -8,12 +8,12 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Core;
+namespace Jetlabs\Lotus\Core;
 
 use BadMethodCallException;
-use Serenity\Lotus\Contracts\ActionInterface;
-use Serenity\Lotus\Contracts\ResponderInterface;
-use Serenity\Lotus\Contracts\ServiceInterface;
+use Jetlabs\Lotus\Contracts\ActionInterface;
+use Jetlabs\Lotus\Contracts\ResponderInterface;
+use Jetlabs\Lotus\Contracts\ServiceInterface;
 
 abstract class Action implements ActionInterface
 {
@@ -21,7 +21,7 @@ abstract class Action implements ActionInterface
 	 * All actions must have a responder that implements
 	 * the ResponderInterface.
 	 *
-	 * @var \Serenity\Lotus\Contracts\ResponderInterface
+	 * @var \Jetlabs\Lotus\Contracts\ResponderInterface
 	 */
 	protected ResponderInterface $responder;
 
@@ -29,7 +29,7 @@ abstract class Action implements ActionInterface
 	 * If an action has a service it must be an instance
 	 * that implements the ServiceInterface.
 	 *
-	 * @var \Serenity\Lotus\Contracts\ServiceInterface
+	 * @var \Jetlabs\Lotus\Contracts\ServiceInterface
 	 */
 	protected ServiceInterface $service;
 
@@ -43,10 +43,9 @@ abstract class Action implements ActionInterface
 	/**
 	 * Register middleware on the controller.
 	 *
-	 * @param \Closure|array|string $middleware
-	 * @param array                 $options
-	 *
-	 * @return \Serenity\Lotus\Core\Options
+	 * @param  \Closure|array|string  $middleware
+	 * @param  array  $options
+	 * @return \Jetlabs\Lotus\Core\Options
 	 */
 	public function middleware($middleware, array $options = []): Options
 	{
@@ -73,9 +72,8 @@ abstract class Action implements ActionInterface
 	/**
 	 * Resolve the responder and return for chaining.
 	 *
-	 * @param \Serenity\Lotus\Contracts\ResponderInterface $responder
-	 *
-	 * @return \Serenity\Lotus\Core\Action
+	 * @param  \Jetlabs\Lotus\Contracts\ResponderInterface  $responder
+	 * @return \Jetlabs\Lotus\Core\Action
 	 */
 	public function resolve(ResponderInterface $responder): Action
 	{
@@ -88,10 +86,9 @@ abstract class Action implements ActionInterface
 	 * Set the component file, and payload expectation, then
 	 * return the class for chaining.
 	 *
-	 * @param string $component
-	 * @param bool   $expects
-	 *
-	 * @return \Serenity\Lotus\Core\Action
+	 * @param  string  $component
+	 * @param  bool  $expects
+	 * @return \Jetlabs\Lotus\Core\Action
 	 */
 	public function with(string $component, bool $expects = false): Action
 	{
@@ -105,8 +102,7 @@ abstract class Action implements ActionInterface
 	 * Set the passed in service to the action and then return
 	 * for chaining.
 	 *
-	 * @param \Serenity\Lotus\Contracts\ServiceInterface $service
-	 *
+	 * @param  \Jetlabs\Lotus\Contracts\ServiceInterface  $service
 	 * @return void
 	 */
 	public function serve(ServiceInterface $service)
@@ -119,9 +115,8 @@ abstract class Action implements ActionInterface
 	/**
 	 * Execute a method on the Action.
 	 *
-	 * @param string $method
-	 * @param array  $parameters
-	 *
+	 * @param  string  $method
+	 * @param  array  $parameters
 	 * @return mixed
 	 */
 	public function callAction($method, $parameters)
@@ -132,12 +127,11 @@ abstract class Action implements ActionInterface
 	/**
 	 * Handle calls to missing methods on the controller.
 	 *
-	 * @param string $method
-	 * @param array  $parameters
+	 * @param  string  $method
+	 * @param  array  $parameters
+	 * @return mixed
 	 *
 	 * @throws \BadMethodCallException
-	 *
-	 * @return mixed
 	 */
 	public function __call($method, $parameters): BadMethodCallException
 	{

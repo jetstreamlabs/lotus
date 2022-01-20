@@ -17,7 +17,7 @@ return [
 			'send', 'make',
 		],
 	],
-	'responder' => \App\Domain\Contracts\VueResponderInterface::class,
+	//'responder' => \App\Domain\Contracts\ResponderInterface::class,
 	'pages'     => [
 		'path' => env('PAGE_PATH', 'resources/content/pages'),
 	],

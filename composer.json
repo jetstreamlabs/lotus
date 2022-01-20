@@ -1,26 +1,26 @@
 {
-	"name": "serenity/lotus",
+	"name": "jetstreamlabs/lotus",
 	"description": "Adds Action Domain Responder pattern with InertiaJS and TailwindCSS to Laravel 8 and above.",
 	"type": "package",
 	"require": {
 		"php": "^8.0",
-		"doctrine/dbal": "^3.2",
-		"inertiajs/inertia-laravel": "^0.4.5",
-		"jetstreamlabs/snowflake": "^1.2",
-		"laravel/framework": "^8.77",
-		"laravel/sanctum": "^2.13",
-		"scrivo/highlight.php": "v9.18.1.6",
-		"serenity/zora": "^2.3",
-		"spatie/laravel-permission": "^4.4.3",
-		"symfony/css-selector": "^5.2",
-		"symfony/dom-crawler": "^5.2",
-		"tightenco/ziggy": "^1.4"
+		"doctrine/dbal": "^3.3",
+		"inertiajs/inertia-laravel": "^0.5.4",
+		"jetstreamlabs/snowflake": "^1.0",
+		"laravel/framework": "^8.0",
+		"laravel/sanctum": "^2.0",
+		"scrivo/highlight.php": "v9.18.1.9",
+		"serenity/zora": "^2.0",
+		"spatie/laravel-permission": "^5.5",
+		"symfony/css-selector": "^6.0",
+		"symfony/dom-crawler": "^6.0",
+		"tightenco/ziggy": "^1.0"
 	},
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Vince Kronlein",
-			"email": "vkronlein@icloud.com"
+			"name": "secondman",
+			"email": "secondman@jetstreamlabs.com"
 		}
 	],
 	"config": {
@@ -32,16 +32,19 @@
 			"src/Lotus/helpers.php"
 		],
 		"psr-4": {
-			"Serenity\\Lotus\\": "src/Lotus/"
+			"Jetlabs\\Lotus\\": "src/Lotus/"
 		}
 	},
 	"extra": {
 		"laravel": {
 			"providers": [
-				"Serenity\\Lotus\\Providers\\LotusServiceProvider"
+				"Jetlabs\\Lotus\\Providers\\LotusServiceProvider"
 			]
 		}
 	},
 	"minimum-stability": "dev",
-	"prefer-stable": true
+	"prefer-stable": true,
+	"require-dev": {
+		"styleci/cli": "^1.2"
+	}
 }

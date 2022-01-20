@@ -8,11 +8,11 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Responders;
+namespace Jetlabs\Lotus\Responders;
 
 use Inertia\ResponseFactory;
-use Serenity\Lotus\Contracts\ResponderInterface;
-use Serenity\Lotus\Core\Responder;
+use Jetlabs\Lotus\Contracts\ResponderInterface;
+use Jetlabs\Lotus\Core\Responder;
 
 abstract class Vue extends Responder implements ResponderInterface
 {
@@ -33,7 +33,7 @@ abstract class Vue extends Responder implements ResponderInterface
 	/**
 	 * Instantiate the class.
 	 *
-	 * @param \Inertia\ResponseFactory $factory
+	 * @param  \Inertia\ResponseFactory  $factory
 	 */
 	public function __construct(ResponseFactory $factory)
 	{
@@ -44,7 +44,7 @@ abstract class Vue extends Responder implements ResponderInterface
 	/**
 	 * Setter for our component.
 	 *
-	 * @param string $component
+	 * @param  string  $component
 	 */
 	public function setComponent(string $component)
 	{

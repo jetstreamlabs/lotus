@@ -8,22 +8,33 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus;
+namespace Jetlabs\Lotus;
 
 use Illuminate\Support\Facades\Facade;
-use Serenity\Lotus\Contracts\ResponseFactoryInterface;
 
+/**
+ * @method static void setRootView($name)
+ * @method static void share($key, $value = null)
+ * @method static array getShared($key = null, $default = null)
+ * @method static void version($version)
+ * @method static int|string getVersion()
+ * @method static Response render($component, $props = [])
+ * @method static \Illuminate\Http\Response location($url)
+ * @method static LazyProp lazy(callable $callback)
+ *
+ * @see \Inertia\ResponseFactory
+ */
 class Lotus extends Facade
 {
 	/**
 	 * Get the registered name of the component.
 	 *
-	 * @throws \RuntimeException
-	 *
 	 * @return string
+	 *
+	 * @throws \RuntimeException
 	 */
 	protected static function getFacadeAccessor()
 	{
-		return ResponseFactoryInterface::class;
+		return ResponseInterface::class;
 	}
 }

@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Contracts;
+namespace Jetlabs\Lotus\Contracts;
 
 interface ResponseFactoryInterface
 {

@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Middleware;
+namespace Jetlabs\Lotus\Middleware;
 
 use Closure;
 
@@ -28,9 +28,8 @@ class MuteActions
 	/**
 	 * Handle an incoming request.
 	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @param \Closure                 $next
-	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Closure  $next
 	 * @return mixed
 	 */
 	public function handle($request, Closure $next)
@@ -40,7 +39,7 @@ class MuteActions
 		if (isset($action['controller'])) {
 			$class = get_class($request->route()->getController());
 
-			if (!$name = $this->mute($class)) {
+			if (! $name = $this->mute($class)) {
 				return $next($request);
 			}
 
@@ -56,8 +55,7 @@ class MuteActions
 	/**
 	 * Create a new reflection and check for modifiers.
 	 *
-	 * @param string $class
-	 *
+	 * @param  string  $class
 	 * @return string|bool
 	 */
 	private function mute($class)
@@ -68,7 +66,7 @@ class MuteActions
 			if ($method->isPublic() || $method->isProtected()) {
 				$name = $method->getName();
 
-				if (!$this->isAllowed($name)) {
+				if (! $this->isAllowed($name)) {
 					return $name;
 				}
 			}
@@ -80,8 +78,7 @@ class MuteActions
 	/**
 	 * Pass all our methods through and check if allowed.
 	 *
-	 * @param string $method
-	 *
+	 * @param  string  $method
 	 * @return bool
 	 */
 	private function isAllowed($method)

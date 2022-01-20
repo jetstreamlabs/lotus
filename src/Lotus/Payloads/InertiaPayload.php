@@ -8,16 +8,16 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Payloads;
+namespace Jetlabs\Lotus\Payloads;
 
-use Serenity\Lotus\Core\Payload;
+use Jetlabs\Lotus\Core\Payload;
 
 class InertiaPayload extends Payload
 {
 	/**
 	 * Instantiate the payload class.
 	 *
-	 * @param array $data
+	 * @param  array  $data
 	 */
 	public function __construct(array $data = [])
 	{

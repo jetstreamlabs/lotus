@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Exceptions;
+namespace Jetlabs\Lotus\Exceptions;
 
 use Illuminate\Support\Arr;
 use RuntimeException;
@@ -32,9 +32,8 @@ class EntityNotFound extends RuntimeException
 	/**
 	 * Set the affected Eloquent model and instance ids.
 	 *
-	 * @param string    $model
-	 * @param int|array $ids
-	 *
+	 * @param  string  $model
+	 * @param  int|array  $ids
 	 * @return $this
 	 */
 	public function setEntity($model, $ids = [])

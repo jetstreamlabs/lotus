@@ -8,13 +8,13 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Core;
+namespace Jetlabs\Lotus\Core;
 
 use Illuminate\Support\Arr;
-use Serenity\Lotus\Contracts\CriteriaInterface;
-use Serenity\Lotus\Contracts\RepositoryInterface;
-use Serenity\Lotus\Exceptions\EntityNotFound;
-use Serenity\Lotus\Exceptions\NoEntityDefined;
+use Jetlabs\Lotus\Contracts\CriteriaInterface;
+use Jetlabs\Lotus\Contracts\RepositoryInterface;
+use Jetlabs\Lotus\Exceptions\EntityNotFound;
+use Jetlabs\Lotus\Exceptions\NoEntityDefined;
 
 abstract class Repository implements RepositoryInterface, CriteriaInterface
 {
@@ -46,15 +46,14 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Execute a query for a single record by ID.
 	 *
-	 * @param int $id
-	 *
+	 * @param  int  $id
 	 * @return mixed|static
 	 */
 	public function find($id)
 	{
 		$entity = $this->entity->find($id);
 
-		if (!$entity) {
+		if (! $entity) {
 			throw (new EntityNotFound())->setEntity(
 				get_class($this->entity->getEntity()),
 				$id
@@ -67,15 +66,14 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Execute a query for a single record with soft-deletes by ID.
 	 *
-	 * @param int $id
-	 *
+	 * @param  int  $id
 	 * @return mixed|static
 	 */
 	public function findWithTrashed($id)
 	{
 		$entity = $this->entity->withTrashed()->find($id);
 
-		if (!$entity) {
+		if (! $entity) {
 			throw (new EntityNotFound())->setEntity(
 				get_class($this->entity->getEntity()),
 				$id
@@ -88,9 +86,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Find where by id and value.
 	 *
-	 * @param string $column
-	 * @param mixed  $value
-	 *
+	 * @param  string  $column
+	 * @param  mixed  $value
 	 * @return mixed|static
 	 */
 	public function findWhere($column, $value)
@@ -101,8 +98,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Find where by array of keys and values.
 	 *
-	 * @param array $values
-	 *
+	 * @param  array  $values
 	 * @return \Illuminate\Database\Eloquent\Collection
 	 */
 	public function findWhereMany(array $values)
@@ -113,16 +109,15 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Find first instance where by id and value.
 	 *
-	 * @param string $column
-	 * @param mixed  $value
-	 *
+	 * @param  string  $column
+	 * @param  mixed  $value
 	 * @return static
 	 */
 	public function findWhereFirst($column, $value)
 	{
 		$entity = $this->entity->where($column, $value)->first();
 
-		if (!$entity) {
+		if (! $entity) {
 			throw (new EntityNotFound())->setEntity(
 				get_class($this->entity->getEntity())
 			);
@@ -134,8 +129,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Paginate the given query into a simple paginator.
 	 *
-	 * @param int $perPage
-	 *
+	 * @param  int  $perPage
 	 * @return mixed|static
 	 */
 	public function paginate($perPage = 10)
@@ -146,8 +140,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Save a new model and return the instance.
 	 *
-	 * @param array $properties
-	 *
+	 * @param  array  $properties
 	 * @return \Illuminate\database\Eloquent\Model|$model
 	 */
 	public function create(array $properties)
@@ -158,9 +151,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Update a record in the database.
 	 *
-	 * @param int   $id
-	 * @param array $properties
-	 *
+	 * @param  int  $id
+	 * @param  array  $properties
 	 * @return int
 	 */
 	public function update($id, array $properties)
@@ -171,8 +163,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Delete a record from the database.
 	 *
-	 * @param int $id
-	 *
+	 * @param  int  $id
 	 * @return mixed
 	 */
 	public function delete(int $id): bool
@@ -183,8 +174,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Force delete a trashed entity.
 	 *
-	 * @param int $id
-	 *
+	 * @param  int  $id
 	 * @return bool
 	 */
 	public function deleteFinal(int $id): bool
@@ -195,8 +185,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Restore a soft-deleted entity.
 	 *
-	 * @param int $id
-	 *
+	 * @param  int  $id
 	 * @return bool
 	 */
 	public function restore(int $id): bool
@@ -207,9 +196,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	/**
 	 * Apply criteria to the given entity.
 	 *
-	 * @param array|list $criteria
-	 *
-	 * @return \Serenity\Lotus\Core\Repository
+	 * @param  array|list  $criteria
+	 * @return \Jetlabs\Lotus\Core\Repository
 	 */
 	public function withCriteria(...$criteria)
 	{
@@ -229,7 +217,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 	 */
 	protected function resolveEntity()
 	{
-		if (!method_exists($this, 'entity')) {
+		if (! method_exists($this, 'entity')) {
 			throw new NoEntityDefined();
 		}
 

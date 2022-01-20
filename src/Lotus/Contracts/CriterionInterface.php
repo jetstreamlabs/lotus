@@ -8,14 +8,14 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Contracts;
+namespace Jetlabs\Lotus\Contracts;
 
 interface CriterionInterface
 {
 	/**
 	 * Apply the requirements to the entity.
 	 *
-	 * @param object $entity
+	 * @param  object  $entity
 	 */
 	public function apply($entity);
 }

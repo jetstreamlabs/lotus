@@ -1,12 +1,10 @@
-risky: false
-version: 8.1
-preset: recommended
-tab-width: 2
-use-tabs: true
-finder:
-  exclude:
-    - 'storage'
-    - 'vendor'
-  name: '*.php'
-  not-name:
-    - '*.blade.php'
+php:
+  preset: laravel
+  version: 8
+  tab-width: 2
+  use-tabs: true
+  finder:
+    exclude:
+      - 'node_modules'
+      - 'vendor'
+    name: '*.php'

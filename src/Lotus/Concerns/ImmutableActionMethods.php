@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Concerns;
+namespace Jetlabs\Lotus\Concerns;
 
 trait ImmutableActionMethods
 {

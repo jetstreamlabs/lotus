@@ -8,25 +8,23 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Contracts;
+namespace Jetlabs\Lotus\Contracts;
 
 interface ResponderInterface
 {
 	/**
 	 * Build up the HTTP response.
 	 *
-	 * @param  \Serenity\Lotus\Contracts\PayloadInterface
-	 *
-	 * @return \Serenity\Lotus\Contracts\ResponderInterface
+	 * @param  \Jetlabs\Lotus\Contracts\PayloadInterface
+	 * @return \Jetlabs\Lotus\Contracts\ResponderInterface
 	 */
 	public function make(PayloadInterface $payload): ResponderInterface;
 
 	/**
 	 * Let the responder know if the action needs a payload.
 	 *
-	 * @param bool $expects
-	 *
-	 * @return \Serenity\Lotus\Contracts\ResponderInterface
+	 * @param  bool  $expects
+	 * @return \Jetlabs\Lotus\Contracts\ResponderInterface
 	 */
 	public function expectsPayload(bool $expects = true): ResponderInterface;
 

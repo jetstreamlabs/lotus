@@ -8,9 +8,9 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Core;
+namespace Jetlabs\Lotus\Core;
 
-use Serenity\Lotus\Contracts\PayloadInterface;
+use Jetlabs\Lotus\Contracts\PayloadInterface;
 
 abstract class Payload implements PayloadInterface
 {
@@ -59,15 +59,15 @@ abstract class Payload implements PayloadInterface
 	/**
 	 * Instantiate the class.
 	 *
-	 * @param mixed $data
+	 * @param  mixed  $data
 	 */
 	public function __construct(array $data = [])
 	{
-		if (!empty($data)) {
+		if (! empty($data)) {
 			$this->setData($data);
 		}
 
-		if (!is_null($this->level) && !is_null($this->message)) {
+		if (! is_null($this->level) && ! is_null($this->message)) {
 			$this->expectsMessage = true;
 		}
 
@@ -137,8 +137,7 @@ abstract class Payload implements PayloadInterface
 	/**
 	 * Dynamically set payload properties when sent via constructor.
 	 *
-	 * @param array $data
-	 *
+	 * @param  array  $data
 	 * @return object
 	 */
 	public function setData(array $data)
@@ -153,7 +152,7 @@ abstract class Payload implements PayloadInterface
 
 		// This will run twice if we set the data in the constructor,
 		// but that shouldn't cause us any problems.
-		if (!is_null($this->level) && !is_null($this->message)) {
+		if (! is_null($this->level) && ! is_null($this->message)) {
 			$this->expectsMessage = true;
 		}
 
@@ -163,8 +162,7 @@ abstract class Payload implements PayloadInterface
 	/**
 	 * Dynamically access payload properties.
 	 *
-	 * @param string $key
-	 *
+	 * @param  string  $key
 	 * @return mixed
 	 */
 	public function __get($key)
@@ -175,9 +173,8 @@ abstract class Payload implements PayloadInterface
 	/**
 	 * Dynamically set container properties.
 	 *
-	 * @param string $key
-	 * @param mixed  $value
-	 *
+	 * @param  string  $key
+	 * @param  mixed  $value
 	 * @return void
 	 */
 	public function __set($key, $value)

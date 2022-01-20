@@ -8,14 +8,14 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Core;
+namespace Jetlabs\Lotus\Core;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Serenity\Lotus\Contracts\PayloadInterface;
-use Serenity\Lotus\Contracts\ServiceInterface;
-use Serenity\Lotus\Payloads\InertiaPayload;
+use Jetlabs\Lotus\Contracts\PayloadInterface;
+use Jetlabs\Lotus\Contracts\ServiceInterface;
+use Jetlabs\Lotus\Payloads\InertiaPayload;
 
 abstract class Service implements ServiceInterface
 {
@@ -26,10 +26,9 @@ abstract class Service implements ServiceInterface
 	/**
 	 * Return a successful response payload.
 	 *
-	 * @param array $data
-	 * @param int   $status
-	 *
-	 * @return \Serenity\Lotus\Contracts\PayloadInterface
+	 * @param  array  $data
+	 * @param  int  $status
+	 * @return \Jetlabs\Lotus\Contracts\PayloadInterface
 	 */
 	public function successResponse(array $data, $status = 303): PayloadInterface
 	{
@@ -39,10 +38,9 @@ abstract class Service implements ServiceInterface
 	/**
 	 * Return an error response payload.
 	 *
-	 * @param array $data
-	 * @param int   $status
-	 *
-	 * @return \Serenity\Lotus\Contracts\PayloadInterface
+	 * @param  array  $data
+	 * @param  int  $status
+	 * @return \Jetlabs\Lotus\Contracts\PayloadInterface
 	 */
 	public function errorResponse(array $data, $status = 302): PayloadInterface
 	{
@@ -52,10 +50,9 @@ abstract class Service implements ServiceInterface
 	/**
 	 * Return an info response payload.
 	 *
-	 * @param array $data
-	 * @param int   $status
-	 *
-	 * @return \Serenity\Lotus\Contracts\PayloadInterface
+	 * @param  array  $data
+	 * @param  int  $status
+	 * @return \Jetlabs\Lotus\Contracts\PayloadInterface
 	 */
 	public function infoResponse(array $data, $status = 303): PayloadInterface
 	{
@@ -65,10 +62,9 @@ abstract class Service implements ServiceInterface
 	/**
 	 * Return a warning response payload.
 	 *
-	 * @param array $data
-	 * @param int   $status
-	 *
-	 * @return \Serenity\Lotus\Contracts\PayloadInterface
+	 * @param  array  $data
+	 * @param  int  $status
+	 * @return \Jetlabs\Lotus\Contracts\PayloadInterface
 	 */
 	public function warningResponse(array $data, $status = 303): PayloadInterface
 	{
@@ -78,9 +74,8 @@ abstract class Service implements ServiceInterface
 	/**
 	 * Build up a payload response.
 	 *
-	 * @param array $data
-	 *
-	 * @return \Serenity\Lotus\Contracts\PayloadInterface
+	 * @param  array  $data
+	 * @return \Jetlabs\Lotus\Contracts\PayloadInterface
 	 */
 	public function payloadResponse(array $data): PayloadInterface
 	{
@@ -90,12 +85,11 @@ abstract class Service implements ServiceInterface
 	/**
 	 * Build up and return a payload.
 	 *
-	 * @param string $message
-	 * @param string $level
-	 * @param string $route
-	 * @param int    $status
-	 *
-	 * @return \Serenity\Lotus\Contracts\PayloadInterface
+	 * @param  string  $message
+	 * @param  string  $level
+	 * @param  string  $route
+	 * @param  int  $status
+	 * @return \Jetlabs\Lotus\Contracts\PayloadInterface
 	 */
 	public function respond($message, $level, $route, $status): PayloadInterface
 	{
@@ -110,7 +104,7 @@ abstract class Service implements ServiceInterface
 	/**
 	 * Generate a new payload instance.
 	 *
-	 * @return \Serenity\Lotus\Contracts\PayloadInterface
+	 * @return \Jetlabs\Lotus\Contracts\PayloadInterface
 	 */
 	public function payload(): PayloadInterface
 	{

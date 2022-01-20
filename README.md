@@ -1,12 +1,12 @@
-# Serenity Lotus Framework
+# Jetlabs Lotus Framework
 
-### Action Domain Responder package for SerenityPHP.
+### Action Domain Responder package for JetlabsPHP.
 
-This is the base framework that provides ADR and Inertia support for Serenity.
+This is the base framework that provides ADR and Inertia support for Jetlabs.
 
 You can learn more about ADR and why we think it's far superior to MVC at the [ADR repository.](https://github.com/pmjones/adr)
 
-Learn more about **Serenity** at: [serenityphp.com](https://serenityphp.com/docs)
+Learn more about **Jetlabs** at: [Jetlabsphp.com](https://Jetlabsphp.com/docs)
 
 Here are the package contents.
 

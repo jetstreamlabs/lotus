@@ -8,14 +8,14 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Contracts;
+namespace Jetlabs\Lotus\Contracts;
 
 interface PayloadInterface
 {
 	/**
 	 * Instantiate the class.
 	 *
-	 * @param mixed $data
+	 * @param  mixed  $data
 	 */
 	public function __construct(array $data = []);
 
@@ -64,8 +64,7 @@ interface PayloadInterface
 	/**
 	 * Dynamically set payload properties when sent via constructor.
 	 *
-	 * @param array $data
-	 *
+	 * @param  array  $data
 	 * @return object
 	 */
 	public function setData(array $data);
@@ -73,8 +72,7 @@ interface PayloadInterface
 	/**
 	 * Dynamically access payload properties.
 	 *
-	 * @param string $key
-	 *
+	 * @param  string  $key
 	 * @return mixed
 	 */
 	public function __get($key);
@@ -82,9 +80,8 @@ interface PayloadInterface
 	/**
 	 * Dynamically set container properties.
 	 *
-	 * @param string $key
-	 * @param mixed  $value
-	 *
+	 * @param  string  $key
+	 * @param  mixed  $value
 	 * @return void
 	 */
 	public function __set($key, $value);

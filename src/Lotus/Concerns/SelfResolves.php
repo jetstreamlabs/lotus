@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Concerns;
+namespace Jetlabs\Lotus\Concerns;
 
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -19,11 +19,10 @@ trait SelfResolves
 	 * Resolves model regardless of given identifier.
 	 *
 	 * @param $model
-	 * @param bool $withTrashed
+	 * @param  bool  $withTrashed
+	 * @return mixed
 	 *
 	 * @throws \Exception
-	 *
-	 * @return mixed
 	 */
 	public static function resolveSelf($model, $withTrashed = false)
 	{
@@ -33,7 +32,7 @@ trait SelfResolves
 			return null;
 		}
 
-		if (!$model instanceof $className) {
+		if (! $model instanceof $className) {
 			if (is_numeric($model)) {
 				try {
 					$model = $className::when($withTrashed, function ($query) {

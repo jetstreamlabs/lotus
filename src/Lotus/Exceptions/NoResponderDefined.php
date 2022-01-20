@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Exceptions;
+namespace Jetlabs\Lotus\Exceptions;
 
 use Exception;
 

@@ -8,17 +8,17 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Core;
+namespace Jetlabs\Lotus\Core;
 
-use Serenity\Lotus\Contracts\PayloadInterface;
-use Serenity\Lotus\Contracts\ResponderInterface;
+use Jetlabs\Lotus\Contracts\PayloadInterface;
+use Jetlabs\Lotus\Contracts\ResponderInterface;
 
 abstract class Responder implements ResponderInterface
 {
 	/**
 	 * Local payload property.
 	 *
-	 * @var \Serenity\Lotus\Contracts\PayloadInterface
+	 * @var \Jetlabs\Lotus\Contracts\PayloadInterface
 	 */
 	protected $payload;
 
@@ -32,9 +32,8 @@ abstract class Responder implements ResponderInterface
 	/**
 	 * Build up the HTTP response.
 	 *
-	 * @param  \Serenity\Lotus\Contracts\PayloadInterface
-	 *
-	 * @return \Serenity\Lotus\Contracts\ResponderInterface
+	 * @param  \Jetlabs\Lotus\Contracts\PayloadInterface
+	 * @return \Jetlabs\Lotus\Contracts\ResponderInterface
 	 */
 	public function make(PayloadInterface $payload): ResponderInterface
 	{
@@ -46,9 +45,8 @@ abstract class Responder implements ResponderInterface
 	/**
 	 * Let the responder know if the action needs a payload.
 	 *
-	 * @param bool $expects
-	 *
-	 * @return \Serenity\Lotus\Contracts\ResponderInterface
+	 * @param  bool  $expects
+	 * @return \Jetlabs\Lotus\Contracts\ResponderInterface
 	 */
 	public function expectsPayload(bool $expects = true): ResponderInterface
 	{

@@ -8,12 +8,15 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Providers;
+namespace Jetlabs\Lotus\Providers;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
+use Jetlabs\Lotus\Contracts\ResponderInterface;
+use Jetlabs\Lotus\Contracts\ResponseFactoryInterface;
+use Jetlabs\Lotus\Responders\Vue;
 
 class LotusServiceProvider extends ServiceProvider
 {
@@ -39,9 +42,9 @@ class LotusServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->registerLaravelAuthModelConfigKey();
+		$this->registerProviders();
 		$this->registerMiddleware();
 		$this->registerMacros();
-		$this->registerProviders();
 
 		$this->publishes([
 			__DIR__.'/../../config/lotus.php' => config_path('lotus.php'),
@@ -65,7 +68,7 @@ class LotusServiceProvider extends ServiceProvider
 
 		Collection::macro('toAssoc', function () {
 			return $this->reduce(function ($assoc, $keyAndValue) {
-				list($key, $value) = $keyAndValue;
+				[$key, $value] = $keyAndValue;
 				$assoc[$key] = $value;
 
 				return $assoc;
@@ -96,14 +99,9 @@ class LotusServiceProvider extends ServiceProvider
 	 */
 	protected function registerMiddleware()
 	{
-		if (!is_file(app_path('Domain/Middleware/InertiaMiddleware.php'))) {
+		if (! is_file(app_path('Domain/Middleware/MuteActions.php'))) {
 			$router = $this->app['router'];
-			$router->pushMiddlewareToGroup('web', \Serenity\Lotus\Middleware\InertiaMiddleware::class);
-		}
-
-		if (!is_file(app_path('Domain/Middleware/MuteActions.php'))) {
-			$router = $this->app['router'];
-			$router->pushMiddlewareToGroup('web', \Serenity\Lotus\Middleware\MuteActions::class);
+			$router->pushMiddlewareToGroup('web', \Jetlabs\Lotus\Middleware\MuteActions::class);
 		}
 	}
 
@@ -114,15 +112,42 @@ class LotusServiceProvider extends ServiceProvider
 	 */
 	protected function registerProviders()
 	{
+		$this->registerInertiaFactory();
+		$this->registerResponseFactory();
+
 		$this->app->singleton('breadcrumb', function (Application $app) {
-			return $app->make(\Serenity\Lotus\Core\Breadcrumbs::class);
+			return $app->make(\Jetlabs\Lotus\Core\Breadcrumbs::class);
+		});
+	}
+
+	/**
+	 * Register Inertia Responder to pass into the ResponseFactory.
+	 *
+	 * @return void
+	 */
+	protected function registerInertiaFactory(): void
+	{
+		$this->app->bind(ResponderInterface::class, function (Application $app) {
+			return $app->make(Vue::class);
+		});
+	}
+
+	/**
+	 * Bind the interface used by the Lotus Facade to our VueResponder concrete.
+	 *
+	 * @return void
+	 */
+	protected function registerResponseFactory(): void
+	{
+		$this->app->singleton(ResponseFactoryInterface::class, function (Application $app) {
+			return $app->make(ResponderInterface::class);
 		});
 	}
 
 	/**
 	 * Various processes within Laravel still need access to
 	 * the auth.providers.users.model config key which
-	 * has been replaced for Serenity. This resolves it.
+	 * has been replaced for Jetlabs. This resolves it.
 	 *
 	 * @return void
 	 */
@@ -135,7 +160,7 @@ class LotusServiceProvider extends ServiceProvider
 	}
 
 	/**
-	 * Controllers and Models don't exist in Serenity so
+	 * Controllers and Models don't exist in Jetlabs so
 	 * we'll rebind these commands to Actions and Entities
 	 * since Laravel squawks if we don't handle it.
 	 *

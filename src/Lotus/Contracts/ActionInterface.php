@@ -8,17 +8,16 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Contracts;
+namespace Jetlabs\Lotus\Contracts;
 
 interface ActionInterface
 {
 	/**
 	 * Register middleware on the action.
 	 *
-	 * @param array|string|\Closure $middleware
-	 * @param array                 $options
-	 *
-	 * @return \Serenity\Lotus\Core\Options
+	 * @param  array|string|\Closure  $middleware
+	 * @param  array  $options
+	 * @return \Jetlabs\Lotus\Core\Options
 	 */
 	public function middleware($middleware, array $options = []);
 
@@ -32,9 +31,8 @@ interface ActionInterface
 	/**
 	 * Execute an action on the controller.
 	 *
-	 * @param string $method
-	 * @param array  $parameters
-	 *
+	 * @param  string  $method
+	 * @param  array  $parameters
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
 	public function callAction($method, $parameters);
@@ -42,12 +40,11 @@ interface ActionInterface
 	/**
 	 * Handle calls to missing methods on the action.
 	 *
-	 * @param string $method
-	 * @param array  $parameters
+	 * @param  string  $method
+	 * @param  array  $parameters
+	 * @return mixed
 	 *
 	 * @throws \BadMethodCallException
-	 *
-	 * @return mixed
 	 */
 	public function __call($method, $parameters);
 }

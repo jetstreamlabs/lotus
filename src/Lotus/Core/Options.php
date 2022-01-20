@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Core;
+namespace Jetlabs\Lotus\Core;
 
 class Options
 {
@@ -22,8 +22,7 @@ class Options
 	/**
 	 * Create a new middleware option instance.
 	 *
-	 * @param array $options
-	 *
+	 * @param  array  $options
 	 * @return void
 	 */
 	public function __construct(array &$options)
@@ -34,8 +33,7 @@ class Options
 	/**
 	 * Set the controller methods the middleware should apply to.
 	 *
-	 * @param array|string|dynamic $methods
-	 *
+	 * @param  array|string|dynamic  $methods
 	 * @return $this
 	 */
 	public function only($methods)
@@ -48,8 +46,7 @@ class Options
 	/**
 	 * Set the controller methods the middleware should exclude.
 	 *
-	 * @param array|string|dynamic $methods
-	 *
+	 * @param  array|string|dynamic  $methods
 	 * @return $this
 	 */
 	public function except($methods)

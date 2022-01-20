@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Core;
+namespace Jetlabs\Lotus\Core;
 
 class Breadcrumbs
 {
@@ -20,14 +20,14 @@ class Breadcrumbs
 	/**
 	 * Add a new breadcrumb to the stack.
 	 *
-	 * @param string $text
-	 * @param string $route
+	 * @param  string  $text
+	 * @param  string  $route
 	 */
 	public function add($text, $route = null)
 	{
 		$this->breadcrumbs[] = [
 			'text'  => $text,
-			'route' => !is_null($route) ? $route : 'last',
+			'route' => ! is_null($route) ? $route : 'last',
 		];
 
 		return $this;

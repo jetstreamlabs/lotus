@@ -8,7 +8,7 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-namespace Serenity\Lotus\Middleware;
+namespace Jetlabs\Lotus\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -19,9 +19,8 @@ class AccountVerified
 	/**
 	 * Handle an incoming request.
 	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @param \Closure                 $next
-	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Closure  $next
 	 * @return mixed
 	 */
 	public function handle(Request $request, Closure $next)
