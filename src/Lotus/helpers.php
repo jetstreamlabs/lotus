@@ -8,14 +8,13 @@
  * Maintained by secondmanveran - Queen Creek, AZ USA
  */
 
-if (!function_exists('bcs')) {
+if (! function_exists('bcs')) {
 	/**
 	 * Return the breadcrumb instance from the container
 	 * or push new crumbs to instance.
 	 *
-	 * @param string|array $text
-	 * @param string       $route
-	 *
+	 * @param  string|array  $text
+	 * @param  string  $route
 	 * @return \App\Services\Breadcrumbs|void
 	 */
 	function bcs($text = null, $route = null)
