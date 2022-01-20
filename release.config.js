@@ -78,6 +78,7 @@ const releaseNotesGeneratorOptions = {
 
 module.exports = {
 	debug: true,
+	branches: ['main'],
 	repositoryUrl: 'https://github.com/jetstreamlabs/lotus',
 
 	plugins: [
