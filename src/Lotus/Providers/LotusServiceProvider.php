@@ -36,6 +36,16 @@ class LotusServiceProvider extends ServiceProvider
 			'lotus'
 		);
 
+		$this->app->bind(
+	  \Jetlabs\Lotus\Snowflake\ResolverInterface::class,
+	  \Jetlabs\Lotus\Snowflake\Resolver::class
+	);
+
+		$this->app->bind(
+	  \Jetlabs\Lotus\Snowflake\DriverInterface::class,
+	  \Jetlabs\Lotus\Snowflake\Driver::class
+	);
+
 		$this->rebindLaravelDefaults();
 	}
 
@@ -45,10 +55,28 @@ class LotusServiceProvider extends ServiceProvider
 		$this->registerProviders();
 		$this->registerMiddleware();
 		$this->registerMacros();
+		$this->registerSnowflakeProvider();
 
 		$this->publishes([
 			__DIR__.'/../../config/lotus.php' => config_path('lotus.php'),
 		]);
+	}
+
+	/**
+	 * Register our snowflake classes and service.
+	 *
+	 * @return void
+	 */
+	protected function registerSnowflakeProvider()
+	{
+		$this->app->bind(
+	  \Jetlabs\Lotus\Contracts\SnowflakeInterface::class,
+	  \Jetlabs\Lotus\Core\Snowflake::class
+	);
+
+		$this->app->singleton('snowflake', function (Application $app) {
+			return $app->make(\Jetlabs\Lotus\Contracts\SnowflakeInterface::class);
+		});
 	}
 
 	/**

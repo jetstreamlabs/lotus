@@ -12,7 +12,7 @@ namespace Jetlabs\Lotus\Core;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use JSLabs\Snowflake\Concerns\HasSnowflakePrimary;
+use Jetlabs\Lotus\Concerns\HasSnowflakePrimary;
 
 abstract class Entity extends Model
 {
