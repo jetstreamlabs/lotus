@@ -1,5 +1,29 @@
 # Lotus Changelog
 
+## [3.0.1](https://github.com/jetstreamlabs/lotus/compare/v3.0.0...v3.0.1) (2022-09-19)
+
+
+### Code Refactoring
+
+* updates for PHP 8.1 ([374927a](https://github.com/jetstreamlabs/lotus/commit/374927ae628f825e2e14157743c0a722063f0838))
+
+
+* Bump @commitlint/cli from 16.1.0 to 17.1.2 ([aec0a47](https://github.com/jetstreamlabs/lotus/commit/aec0a470ede3b8553415cbd44b64a4ced2c2f244))
+* Bump @commitlint/config-conventional from 16.0.0 to 17.1.0 ([f9897ea](https://github.com/jetstreamlabs/lotus/commit/f9897eac8152fc5f2536949a8a2fd038bd1ebc22))
+* Bump semver-regex from 3.1.3 to 3.1.4 ([6c1d1be](https://github.com/jetstreamlabs/lotus/commit/6c1d1be5298e9a5242fd8cc2b1b190c73c319458))
+* Bump semantic-release from 19.0.2 to 19.0.5 ([792a150](https://github.com/jetstreamlabs/lotus/commit/792a1502fee74fec293da87d86dcc564742031d4))
+* Bump npm from 8.3.1 to 8.19.2 ([e5591ea](https://github.com/jetstreamlabs/lotus/commit/e5591eaaba99c4e247b39f590572b9a9b46fb396))
+* Bump node-fetch from 2.6.6 to 2.6.7 ([7104951](https://github.com/jetstreamlabs/lotus/commit/7104951af6677ab40017a4478876957702aaacee))
+* Bump husky from 7.0.4 to 8.0.1 ([4e51ef9](https://github.com/jetstreamlabs/lotus/commit/4e51ef9123e618e0bf6d4d2c66e27e3dd7c66d21))
+* Bump minimist from 1.2.5 to 1.2.6 ([6409818](https://github.com/jetstreamlabs/lotus/commit/6409818f6c4745f9f98fa75735adca5cb20eedad))
+* Bump actions/setup-node from 2 to 3.1.0 ([ee3562c](https://github.com/jetstreamlabs/lotus/commit/ee3562c1357f014c510d7a6b1d5cb06fef8395bf))
+* Bump actions/checkout from 2 to 3 ([b55c9c1](https://github.com/jetstreamlabs/lotus/commit/b55c9c1293f5bc3c4fee78e8c3cc32b6163dfe91))
+
+
+### Utilities
+
+* **deps:** dependabot updates ([d88284e](https://github.com/jetstreamlabs/lotus/commit/d88284e0071cca283b668fa5822e84fddcef82aa))
+
 # [3.0.0](https://github.com/jetstreamlabs/lotus/compare/v2.1.0...v3.0.0) (2022-01-20)
 
 
