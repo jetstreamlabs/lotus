@@ -9,7 +9,7 @@
 		"jetstreamlabs/zora": "^3.0",
 		"laravel/framework": "^8.0",
 		"laravel/sanctum": "^2.0",
-		"scrivo/highlight.php": "v9.18.1.9",
+		"scrivo/highlight.php": "v9.18.1.10",
 		"symfony/css-selector": "^6.0",
 		"symfony/dom-crawler": "^6.0",
 		"tightenco/ziggy": "^1.0"
