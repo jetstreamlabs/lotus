@@ -5,7 +5,7 @@
 	"require": {
 		"php": "^8.0",
 		"doctrine/dbal": "^3.3",
-		"inertiajs/inertia-laravel": "^0.5.4",
+		"inertiajs/inertia-laravel": "^0.6.9",
 		"jetstreamlabs/zora": "^3.0",
 		"laravel/framework": "^8.0",
 		"laravel/sanctum": "^2.0",
