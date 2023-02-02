@@ -7,7 +7,7 @@
 		"doctrine/dbal": "^3.3",
 		"inertiajs/inertia-laravel": "^0.5.4",
 		"jetstreamlabs/zora": "^3.0",
-		"laravel/framework": "^8.0",
+		"laravel/framework": "^9.50",
 		"laravel/sanctum": "^2.0",
 		"scrivo/highlight.php": "v9.18.1.9",
 		"symfony/css-selector": "^6.0",
